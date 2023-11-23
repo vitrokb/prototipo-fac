@@ -17,11 +17,39 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: bisque;
+}
+
+.content-wrapper {
+  height: 620px;
+}
+
+.letters-wrapper {
+  background-color: white;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 500px;
+}
+
+.written-text {
+  width: 300px;
+  margin-left: 50px;
+  padding: 20px;
+  background-color: whitesmoke;
+  height: 300px;
+  border-radius: 5px;
+  font-size: 2rem;
+  overflow-wrap: break-word;
+  overflow-y: auto;
+}
+
+.clear-button {
+  background-color: whitesmoke;
+  margin-left: 50px;
+  margin-top: 30px;
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 50px;
+  width: 100px;
 }
