@@ -5,10 +5,11 @@ import { useState } from 'react';
 
 export default function Home() {
   const [clickedText, setClickedText] = useState('');
+  const [textToShow, setTextToShow] = useState('');
 
   function letterClick(value: string) {
+    console.log('Letra: ', value);
     setClickedText((previousState) => previousState + value);
-    document.getElementById('textarea')?.focus();
   }
 
   return (
@@ -18,7 +19,11 @@ export default function Home() {
       <div className="content-wrapper flex">
         <div className="letters-wrapper">
           {letters.map((letter) => (
-            <button onClick={() => letterClick(letter.value)} key={letter.source}>
+            <button
+              className="letter"
+              onClick={() => letterClick(letter.value)}
+              key={letter.source}
+            >
               <Image
                 src={letter.source}
                 height={letter.height}
@@ -34,17 +39,29 @@ export default function Home() {
             id="textarea"
             onChange={() => console.log('chamei')}
             className="written-text"
-            value={clickedText}
+            value={textToShow}
           />
-          <button
-            className="clear-button"
-            onClick={() => {
-              setClickedText('');
-              document.getElementById('textarea')?.focus();
-            }}
-          >
-            Limpar
-          </button>
+          <div>
+            <button
+              className="clear-button"
+              onClick={() => {
+                setTextToShow(clickedText);
+                document.getElementById('textarea')?.focus();
+              }}
+            >
+              Traduzir
+            </button>
+            <button
+              className="clear-button"
+              onClick={() => {
+                setTextToShow('');
+                setClickedText('');
+                document.getElementById('textarea')?.focus();
+              }}
+            >
+              Limpar
+            </button>
+          </div>
         </div>
       </div>
     </main>
